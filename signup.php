@@ -24,9 +24,9 @@
     <div class="row-2">
         <div class="navbar col-12">
             <nav>
-                <a href="login.html" class="option"> LOG IN </a>
-                <a href="signup.html" class="option"> SIGN UP </a>
-                <a href="aboutus.html" class="option"> ABOUT US </a>
+                <a href="login.php" class="option"> LOG IN </a>
+                <a href="signup.php" class="option"> SIGN UP </a>
+                <a href="aboutus.htm" class="option"> ABOUT US </a>
             </nav>
         </div>
     </div>
@@ -36,8 +36,7 @@
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="off" target="_self" enctype="multipart/form-data" action="/login.php"
-                method="POST">
+            <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
 
                 <h2>SIGN UP</h2><br>
 
@@ -58,16 +57,13 @@
                 <input type="text" id="name" name="name" placeholder="Full Name" title="Enter Full Name" required><br>
 
                 <label for="id"></label>
-                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{13}"
-                    title="Enter 13 digit ID" required><br>
+                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{13}" title="Enter 13 digit ID" required><br>
 
                 <label for="email"></label>
-                <input type="email" id="email" name="email" placeholder="E-mail Address" title="Enter E-mail Address"
-                    required><br>
+                <input type="email" id="email" name="email" placeholder="E-mail Address" title="Enter E-mail Address" required><br>
 
                 <label for="phonenumber"></label>
-                <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="[0-9]{11}"
-                    title="Enter Phone Number"><br>
+                <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone Number" pattern="[0-9]{11}" title="Enter Phone Number"><br>
 
                 <label for="bdate">Enter your birthdate</label>
                 <input type="date" id="bdate" name="date" min="1999-01-01" max="2020-06-26"><br>
@@ -89,14 +85,13 @@
                 </fieldset><br>
 
                 <label for="about"></label>
-                <textarea rows="5" cols="45" id="about" name="about" placeholder="Tell us something about you..."
-                    title="Tell us something about you..."></textarea><br>
+                <textarea rows="5" cols="45" id="about" name="about" placeholder="Tell us something about you..." title="Tell us something about you..."></textarea><br>
 
                 <label for="pass"></label>
                 <input type="password" id="pass" name="password" placeholder="Password" minlength="6" required><br><br>
 
                 <button type="reset" onclick="alert('Form Reset!')">RESET</button>
-                <button type="submit" onclick="alert('Unable to registration!\nSorry!!!')">SIGNUP</button><br><br>
+                <button type="submit" value="submit" name="submit">SIGNUP</button><br><br>
 
                 <a href="password.htm" class="option">Forget Password ?</a>
 
@@ -105,6 +100,39 @@
         </div>
 
         <div class="sidebar col-3">
+
+            <?php
+            include("connectdb.php");
+
+            if (isset($_POST['submit'])) {
+                $department = $_POST['department'];
+                $name = $_POST['name'];
+                $id = $_POST['id'];
+                $email = $_POST['email'];
+                $phone_num = $_POST['phonenumber'];
+                $gender = $_POST['gender'];
+                $register = $_POST['title'];
+                $message = $_POST['message'];
+                $pass = $_POST['pass'];
+
+                $ext = explode(".", $_FILES['photo']['name']);
+                $c = count($ext);
+                $ext = $ext[$c - 1];
+                $image = $id . "." . $ext;
+
+                $query = "insert into users values('$department','$name','$id','$email','$phone_num','$gender','$register','$message','$pass','$image')";
+
+                if (mysqli_query($con, $query)) {
+                    echo "Successfully registered";
+                    if ($image != null) {
+                        move_uploaded_file($FILES['photo']['tmp_name'], "Photos/$image");
+                    }
+                } else {
+                    echo "error!" . mysqli_error($con);
+                }
+            }
+            ?>
+
         </div>
     </div>
 

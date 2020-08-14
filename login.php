@@ -25,9 +25,9 @@
     <div class="row-2">
         <div class="navbar col-12">
             <nav>
-                <a href="login.html" class="option"> LOG IN </a>
-                <a href="signup.html" class="option"> SIGN UP </a>
-                <a href="aboutus.html" class="option"> ABOUT US </a>
+                <a href="login.php" class="option"> LOG IN </a>
+                <a href="signup.php" class="option"> SIGN UP </a>
+                <a href="aboutus.htm" class="option"> ABOUT US </a>
             </nav>
         </div>
     </div>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="off" target="_self" enctype="multipart/form-data" action="Pages/home.html"
+            <form id="form1" autocomplete="off" target="_self" enctype="multipart/form-data" action="Pages/home.php"
                 method="POST">
                 
                 <h2>LOG IN</h2><br>
@@ -61,7 +61,7 @@
                 <button type="reset" onclick="alert('Form Reset!')">RESET</button>
                 <button type="submit" onclick="alert('Unable to login!\nSorry!!!')">LOGIN</button><br><br>
 
-                <a href="password.htm" class="option">Forget Password ?</a>
+                <a href="password.php" class="option">Forget Password ?</a>
             
             </form>
                 
