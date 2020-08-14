@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="OCA" content="DBMS,ADA,DS">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/png" href="icon.png" />
     <link rel="stylesheet" type="text/css" href="fonts/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
@@ -37,34 +37,27 @@
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="off" target="_self" enctype="multipart/form-data" action="Pages/home.html"
-                method="POST">
-                
-                <h2>LOG IN</h2><br>
 
-                <label for="dept"></label><br>
-                <select id="dept" name="department" size="1" required autofocus>
-                    <option value="">Choose Department</option>
-                    <option value="CSE">Computer Science & Engineering</option>
-                    <option value="EEE">Electrical & Electronics Engineering</option>
-                    <option value="other">Other</option>
-                </select><br><br>
+            <h1>ONLINE CLASS ASSISTANT (OCA)</h1><br>
 
-                <label for="id"></label>
-                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{13}"
-                    title="Enter 13 digit ID" required><br><br>
+            <h2>For Institutional Purposes:</h2><br>
+            It can be used to upload necessary documents, reference books, slides, videos by teachers. Enrolled student
+            will be able to collect the documents from the OCA. Teachers can also upload marks, assign class works /
+            assignment, schedule exams, announce notices (class postponed/ extra class) using OCA.
 
-                <label for="pass"></label>
-                <input type="password" id="pass" name="password" placeholder="Password" minlength="6"
-                    required><br><br>
+            <h3>Why OCA?</h3><br>
+            - Teachers can easily inform student about class postpone.
+            - Students can easily get necessary information, documents from course teacher.
+            - And many more...
 
-                <button type="reset" onclick="alert('Form Reset!')">RESET</button>
-                <button type="submit" onclick="alert('Unable to login!\nSorry!!!')">LOGIN</button><br><br>
-
-                <a href="password.htm" class="option">Forget Password ?</a>
+            <h2>For Public Use:</h2><br>
+            Anyone who is expert in a particular topics can upload online courses (Paid/Free) as a
+            video/slides/documents. Students can enroll to any courses and learn from online.
             
-            </form>
-                
+            <h3>Why OCA?</h3><br>
+            - Teachers can share their valuable knowledge.
+            - Students will get online assistance from online courses.
+
         </div>
 
         <div class="sidebar col-3">
