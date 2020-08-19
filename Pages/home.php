@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="OCA" content="DBMS,ADA,DS">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="home.css">
     <link rel="icon" type="image/png" href="icon.png" />
     <link rel="stylesheet" type="text/css" href="fonts/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
@@ -25,41 +25,37 @@
     <div class="row-2">
         <div class="navbar col-12">
             <nav>
-                <a href="login.html" class="option"> LOG IN </a>
-                <a href="signup.html" class="option"> SIGN UP </a>
-                <a href="aboutus.html" class="option"> ABOUT US </a>
+                <a href="messages.php" class="option"> MESSAGES </a>
+                <a href="settings.php" class="option"> SETTINGS </a>
+                <a href="login.php" class="option"> LOGOUT </a>
             </nav>
         </div>
     </div>
 
     <div class="row-3">
         <div class="menu col-3">
+
+            <a href="courses.php" class="option"> COURSES </a><br>
+            <a href="announcement.php" class="option"> ANNOUNCEMENTS </a><br>
+
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="off" target="_self" enctype="multipart/form-data" action="/login.php"
-                method="POST">
-                
-                <h2>LOG IN</h2><br>
 
-                <label for="id"></label>
-                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{13}"
-                    title="Enter 13 digit ID" required autofocus><br><br>
+            <h1>WELCOME</h1>
+            <hr>
+            <p>Welcome to Online Class Assitance. Choose above options to proceed. Select courses to select your listed courses. </p>
+            <hr>
 
-                <label for="pass"></label>
-                <input type="password" id="pass" name="password" placeholder="Password" minlength="6"
-                    required><br><br>
-
-                <button type="reset" onclick="alert('Form Reset!')">RESET</button>
-                <button type="submit" onclick="alert('Unable to login!\nSorry!!!')">LOGIN</button><br><br>
-
-                <a href="password.htm" class="option">Forget Password ?</a>
-            
-            </form>
-                
         </div>
 
         <div class="sidebar col-3">
+
+            <img src="abc.png" alt="advertisement"><br>
+            <img src="abc.png" alt="advertisement"><br>
+            <img src="abc.png" alt="advertisement"><br>
+            <img src="abc.png" alt="advertisement"><br>
+
         </div>
     </div>
 

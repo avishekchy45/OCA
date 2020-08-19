@@ -36,7 +36,7 @@
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
+            <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data"  method="POST">
 
                 <h2>SIGN UP</h2><br>
 
@@ -57,7 +57,7 @@
                 <input type="text" id="name" name="name" placeholder="Full Name" title="Enter Full Name" required><br>
 
                 <label for="id"></label>
-                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{13}" title="Enter 13 digit ID" required><br>
+                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{4}" title="Enter 4 digit ID" required><br>
 
                 <label for="email"></label>
                 <input type="email" id="email" name="email" placeholder="E-mail Address" title="Enter E-mail Address" required><br>
@@ -112,20 +112,23 @@
                 $phone_num = $_POST['phonenumber'];
                 $gender = $_POST['gender'];
                 $register = $_POST['title'];
-                $message = $_POST['message'];
-                $pass = $_POST['pass'];
+                $message = $_POST['about'];
+                $pass = $_POST['password'];
 
                 $ext = explode(".", $_FILES['photo']['name']);
                 $c = count($ext);
                 $ext = $ext[$c - 1];
                 $image = $id . "." . $ext;
 
+                //$pass = ENCODE('$pass','$id');
+                //$pass = md5('$pass');
+
                 $query = "insert into users values('$department','$name','$id','$email','$phone_num','$gender','$register','$message','$pass','$image')";
 
                 if (mysqli_query($con, $query)) {
-                    echo "Successfully registered";
+                    echo "Successfully registered $id";
                     if ($image != null) {
-                        move_uploaded_file($FILES['photo']['tmp_name'], "Photos/$image");
+                        move_uploaded_file($_FILES['photo']['tmp_name'], "Photos/$image");
                     }
                 } else {
                     echo "error!" . mysqli_error($con);

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <!--DESIGNED BY AVISHEK CHOWDHURY-->
 <html>
@@ -37,9 +40,8 @@
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="off" target="_self" enctype="multipart/form-data" action="Pages/home.php"
-                method="POST">
-                
+            <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
+
                 <h2>LOG IN</h2><br>
 
                 <label for="dept"></label><br>
@@ -51,23 +53,40 @@
                 </select><br><br>
 
                 <label for="id"></label>
-                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{13}"
-                    title="Enter 13 digit ID" required><br><br>
+                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{4}" title="Enter 13 digit ID" required><br><br>
 
                 <label for="pass"></label>
-                <input type="password" id="pass" name="password" placeholder="Password" minlength="6"
-                    required><br><br>
+                <input type="password" id="pass" name="pass" placeholder="Password" minlength="6" required><br><br>
 
                 <button type="reset" onclick="alert('Form Reset!')">RESET</button>
-                <button type="submit" onclick="alert('Unable to login!\nSorry!!!')">LOGIN</button><br><br>
+                <button type="submit" name="login">LOGIN</button><br><br>
 
                 <a href="password.php" class="option">Forget Password ?</a>
-            
+
             </form>
-                
+
         </div>
 
         <div class="sidebar col-3">
+
+            <?php
+            include("connectdb.php");
+            if (isset($_POST['login'])) {
+                $uid = $_POST['id'];
+                $upass = $_POST['pass'];
+
+                $sql = "select id,pass from users where id='$uid' and pass='$upass'";
+                $r = mysqli_query($con, $sql);
+                if (mysqli_num_rows($r) > 0) {
+                    $_SESSION['user_id'] = $uid;
+                    $_SESSION['admin_login_status'] = "loged in";
+                    header("Location:Pages/home.php");
+                } else {
+                    echo "<p style='color: red;'>Incorrect UserId or Password</p>";
+                }
+            }
+            ?>
+
         </div>
     </div>
 
