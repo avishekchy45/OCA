@@ -10,7 +10,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="OCA" content="OCA,FREECOURSE">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="icon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -69,7 +69,7 @@ session_start();
         <div class="sidebar col-3">
 
             <?php
-            include("connectdb.php");
+            include("../connectdb.php");
             if (isset($_POST['login'])) {
                 $uid = $_POST['id'];
                 $upass = $_POST['pass'];
@@ -79,7 +79,7 @@ session_start();
                 if (mysqli_num_rows($r) > 0) {
                     $_SESSION['user_id'] = $uid;
                     $_SESSION['admin_login_status'] = "loged in";
-                    header("Location:admin/home.php");
+                    header("Location:home.php");
                 } else {
                     echo "<p style='color: red;'>Incorrect UserId or Password</p>";
                 }

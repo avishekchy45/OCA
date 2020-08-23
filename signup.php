@@ -3,13 +3,12 @@
 <html>
 
 <head>
-    <title>ONLINE CLASS ASSISTANCE-login</title>
+    <title>SIGNUP-OCA</title>
     <meta charset="UTF-8">
-    <meta name="OCA" content="DBMS,ADA,DS">
+    <meta name="OCA" content="OCA,FREECOURSE">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="signup.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="icon.png" />
-    <link rel="stylesheet" type="text/css" href="fonts/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
@@ -26,7 +25,7 @@
             <nav>
                 <a href="login.php" class="option"> LOG IN </a>
                 <a href="signup.php" class="option"> SIGN UP </a>
-                <a href="aboutus.htm" class="option"> ABOUT US </a>
+                <a href="index.htm" class="option"> ABOUT US </a>
             </nav>
         </div>
     </div>
@@ -36,7 +35,7 @@
         </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data"  method="POST">
+            <form id="form" autocomplete="on" target="_self" enctype="multipart/form-data"  method="POST">
 
                 <h2>SIGN UP</h2><br>
 
@@ -71,7 +70,7 @@
                 <fieldset>
                     <legend>Gender</legend>
                     <input type="radio" id="male" name="gender" value="male">
-                    <label for="male">Male</label>
+                    <label for="male">Male</label><br>
                     <input type="radio" id="female" name="gender" value="female">
                     <label for="female">Female</label>
                 </fieldset><br>
@@ -79,7 +78,7 @@
                 <fieldset>
                     <legend>Register as</legend>
                     <input type="checkbox" id="instructor" name="title" value="instructor">
-                    <label for="instructor">Instructor</label>
+                    <label for="instructor">Instructor</label><br>
                     <input type="checkbox" id="student" name="title" value="student">
                     <label for="student">Student</label>
                 </fieldset><br>
@@ -92,8 +91,6 @@
 
                 <button type="reset" onclick="alert('Form Reset!')">RESET</button>
                 <button type="submit" value="submit" name="submit">SIGNUP</button><br><br>
-
-                <a href="password.htm" class="option">Forget Password ?</a>
 
             </form>
 
@@ -128,7 +125,7 @@
                 if (mysqli_query($con, $query)) {
                     echo "Successfully registered $id";
                     if ($image != null) {
-                        move_uploaded_file($_FILES['photo']['tmp_name'], "Photos/$image");
+                        move_uploaded_file($_FILES['photo']['tmp_name'], "Uploads/User_Photos/$image");
                     }
                 } else {
                     echo "error!" . mysqli_error($con);

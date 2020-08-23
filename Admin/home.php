@@ -7,8 +7,7 @@
     <meta charset="UTF-8">
     <meta name="OCA" content="DBMS,ADA,DS">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
-    <link rel="icon" type="image/png" href="icon.png" />
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" type="text/css" href="fonts/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Acme">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
