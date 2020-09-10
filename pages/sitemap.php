@@ -1,15 +1,11 @@
 <!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
-$user = $_SESSION['user'];
-$id = $_SESSION['user_id'];
-include("../pages/loggedout.php");
-include("usercheck.php");
 ?>
 <html>
 
 <head>
-    <title>OCA</title>
+    <title>ONLINE CLASS ASSISTANT</title>
     <meta charset="UTF-8">
     <meta name="OCA" content="Online Class Material, Classroom, Free courses">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +19,7 @@ include("usercheck.php");
 <body>
     <div class="row-1">
         <div class="header col-12">
-            <h1>Online Class Assistance</h1>
+            <h1>Online Class Assistant</h1>
         </div>
     </div>
 
@@ -39,24 +35,15 @@ include("usercheck.php");
 
     <div class="row-3">
         <div class="menu col-3">
-            <?php
-            include("../options/menu.php");
-            ?>
         </div>
 
         <div class="main col-6">
 
-            <h1>WELCOME</h1>
-            <hr>
-            <p>Welcome <?php echo " \"$user\" $id " ?> to Online Class Assitance. Choose above options to proceed. Select
-                courses to select your listed courses. </p>
-
-            <hr>
+            <h1>ONLINE CLASS ASSISTANT (OCA)</h1>
 
         </div>
 
         <div class="sidebar col-3">
-
         </div>
     </div>
 

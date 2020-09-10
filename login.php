@@ -1,14 +1,15 @@
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
+include("pages/loggedin.php");
+include("validation.php");
 ?>
-<!DOCTYPE html>
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <html>
 
 <head>
     <title>LOGIN-OCA</title>
     <meta charset="UTF-8">
-    <meta name="OCA" content="OCA,FREECOURSE">
+    <meta name="OCA" content="Online Class Material, Classroom, Free courses">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="icon.png" />
@@ -27,76 +28,54 @@ session_start();
     <div class="row-2">
         <div class="navbar col-12">
             <nav>
-                <a href="login.php" class="option"> LOG IN </a>
-                <a href="signup.php" class="option"> SIGN UP </a>
-                <a href="index.htm" class="option"> ABOUT US </a>
+                <?php
+                include("options/navbar.php");
+                ?>
             </nav>
         </div>
     </div>
 
     <div class="row-3">
         <div class="menu col-3">
-        </div>
+            </div>
 
         <div class="main col-6">
             <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
 
-                <h2>LOG IN</h2><br>
+                <h2>LOG IN</h2>
 
-                <label for="dept"></label><br>
-                <select id="dept" name="department" size="1" required autofocus>
-                    <option value="">Choose Department</option>
-                    <option value="CSE">Computer Science & Engineering</option>
-                    <option value="EEE">Electrical & Electronics Engineering</option>
-                    <option value="other">Other</option>
-                </select><br><br>
+                <label for="user"></label>
+                <select id="user" name="user" size="1" required autofocus>
+                    <option value="">Login As</option>
+                    <option value="instructor">INSTRUCTOR</option>
+                    <option value="student">LEARNER</option>
+                </select><br>
 
-                <label for="id"></label>
-                <input type="text" id="id" name="id" placeholder="Student ID" pattern="[0-9]{4}" title="Enter 13 digit ID" required><br><br>
+                <label for="id/username"></label>
+                <input type="text" id="id/username" name="id" placeholder="ID/USERNAME" maxlength="14" Ztitle="Enter your ID/USERNAME" required><br>
 
                 <label for="pass"></label>
-                <input type="password" id="pass" name="pass" placeholder="Password" minlength="6" required><br><br>
+                <input type="password" id="pass" name="pass" placeholder="PASSWORD" title="Enter your PASSWORD" required><br>
 
                 <button type="reset" onclick="alert('Form Reset!')">RESET</button>
                 <button type="submit" name="login">LOGIN</button><br><br>
 
-                <a href="login.php" class="option" onclick="alert('Please contact with admin!')">Forget Password ?</a>
+                <a href="login.php" class="option" onclick="alert('Please contact with admin!')">Forget Password ?</a><br>
 
             </form>
 
         </div>
 
         <div class="sidebar col-3">
-
-            <?php
-            include("connectdb.php");
-            if (isset($_POST['login'])) {
-                $uid = $_POST['id'];
-                $upass = $_POST['pass'];
-
-                $sql = "select id,pass from users where id='$uid' and pass='$upass'";
-                $r = mysqli_query($con, $sql);
-                if (mysqli_num_rows($r) > 0) {
-                    $_SESSION['user_id'] = $uid;
-                    $_SESSION['admin_login_status'] = "loged in";
-                    header("Location:admin/home.php");
-                } else {
-                    echo "<p style='color: red;'>Incorrect UserId or Password</p>";
-                }
-            }
-            ?>
-
-        </div>
+            </div>
     </div>
 
     <div class="row-4">
         <div class="footer col-12">
             <footer>
-                <a href="contact.htm" class="option">Contact Information</a>
-                <a href="privacy.htm" class="option">Privacy Policy</a>
-                <a href="terms.htm" class="option">Terms of Services</a>
-                <a href="copyright.htm" class="option">Copyright Information</a>
-                <a href="sitemap.htm" class="option">Sitemap and Related Documents</a>
+                <?php
+                include("options/footer.php");
+                ?>
             </footer>
         </div>
     </div>
