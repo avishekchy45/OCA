@@ -1,12 +1,10 @@
 <?php
-
 include("connection.php");
 
 if (isset($_POST['login'])) {
     $user = $_POST['user'];
     $id = $_POST['id'];
     $pass = $_POST['pass'];
-
     $query = "select ID,PASS from $user where BINARY ID='$id' and BINARY PASS='$pass'";
 
     $r = mysqli_query($con, $query);
@@ -15,7 +13,7 @@ if (isset($_POST['login'])) {
         $_SESSION['user_id'] = $id;
         $_SESSION['login_status'] = "in";
         if ($user == 'instructor' || $user == 'student')
-            header("Location:$user/home.php");
+            header("Location:user/home.php");
         else if ($user == 'admin')
             header("Location:home.php");
     } else {
@@ -26,7 +24,7 @@ if (isset($_POST['login'])) {
 if (isset($_POST['signup'])) {
     $user = $_POST['user'];
     $name = $_POST['name'];
-    $id = $_POST['id'];
+    $id = $_POST['username'];
     $email = $_POST['email'];
     $phone_num = $_POST['phone_num'];
     $bdate = $_POST['bdate'];
@@ -40,7 +38,11 @@ if (isset($_POST['signup'])) {
         $ext = explode(".", $_FILES['user_photo']['name']);
         $c = count($ext);
         $ext = $ext[$c - 1];
-        $photo = $id . "." . $ext;
+        if ($user == 'instructor')
+            $type = "I-";
+        else if ($user == 'student')
+            $type = "S-";
+        $photo = $type . $id . "." . $ext;
         move_uploaded_file($_FILES['user_photo']['tmp_name'], "uploads/user_photo/$photo");
     } else
         $photo = '';
@@ -48,11 +50,11 @@ if (isset($_POST['signup'])) {
     $query = "insert into $user (NAME,ID,EMAIL,PHONENUMBER,BIRTHDATE,GENDER,LANGUAGES,ABOUT,PASS,PHOTO) values ('$name','$id','$email','$phone_num','$bdate','$gender','" . $languages . "','$about','$pass','$photo')";
 
     if (mysqli_query($con, $query)) {
-        echo "<correct> Successfully registered $id . Go to login page to continue...</correct>";
-        $_SESSION['user'] = $user;
-        $_SESSION['user_id'] = $id;
-        $_SESSION['login_status'] = "in";
-        header("Location:$user/home.php");
+        echo "<script>alert('Successfully registered .Remember this ID($id) for further login.Go to login page to continue...')</script>";
+        //$_SESSION['user'] = $user;
+        //$_SESSION['user_id'] = $id;
+        //$_SESSION['login_status'] = "in";
+        //header("Location:user/home.php");
     } else {
         echo "<wrong> Registration error! </wrong>" . mysqli_error($con);
     }

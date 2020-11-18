@@ -7,7 +7,7 @@ include("validation.php");
 <html>
 
 <head>
-    <title>LOGIN-OCA</title>
+    <title>LOGIN</title>
     <meta charset="UTF-8">
     <meta name="OCA" content="Online Class Material, Classroom, Free courses">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,9 @@ include("validation.php");
 <body>
     <div class="row-1">
         <div class="header col-12">
-            <h1>Online Class Assistance</h1>
+            <?php
+            include("options/header.php");
+            ?>
         </div>
     </div>
 
@@ -37,10 +39,10 @@ include("validation.php");
 
     <div class="row-3">
         <div class="menu col-3">
-            </div>
+        </div>
 
         <div class="main col-6">
-            <form id="form1" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
+            <form id="form" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
 
                 <h2>LOG IN</h2>
 
@@ -52,7 +54,7 @@ include("validation.php");
                 </select><br>
 
                 <label for="id/username"></label>
-                <input type="text" id="id/username" name="id" placeholder="ID/USERNAME" maxlength="14" Ztitle="Enter your ID/USERNAME" required><br>
+                <input type="text" id="id/username" name="id" placeholder="ID/USERNAME" maxlength="21" title="Enter your ID/USERNAME" required><br>
 
                 <label for="pass"></label>
                 <input type="password" id="pass" name="pass" placeholder="PASSWORD" title="Enter your PASSWORD" required><br>
@@ -67,7 +69,7 @@ include("validation.php");
         </div>
 
         <div class="sidebar col-3">
-            </div>
+        </div>
     </div>
 
     <div class="row-4">

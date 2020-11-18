@@ -1,14 +1,37 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
+include("validation.php");
+if (isset($_POST['username_check'])) {
+    $username = $_POST['username'];
+    $sql = "SELECT * FROM student,instructor WHERE student.ID='$username' OR instructor.ID='$username'";
+    $results = mysqli_query($con, $sql);
+    if (mysqli_num_rows($results) > 0) {
+        echo "taken";
+    } else {
+        echo 'not_taken';
+    }
+    exit();
+}
+if (isset($_POST['email_check'])) {
+    $email = $_POST['email'];
+    $sql = "SELECT * FROM student,instructor WHERE student.email='$email' OR instructor.email='$email'";
+    $results = mysqli_query($con, $sql);
+    if (mysqli_num_rows($results) > 0) {
+        echo "taken";
+    } else {
+        echo 'not_taken';
+    }
+    exit();
+}
+
 session_start();
 include("pages/loggedin.php");
-include("validation.php");
 ?>
 
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <html>
 
 <head>
-    <title>SIGNUP-OCA</title>
+    <title>SIGNUP</title>
     <meta charset="UTF-8">
     <meta name="OCA" content="Online Class Material, Classroom, Free courses">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +44,9 @@ include("validation.php");
 <body>
     <div class="row-1">
         <div class="header col-12">
-            <h1>Online Class Assistant</h1>
+            <?php
+            include("options/header.php");
+            ?>
         </div>
     </div>
 
@@ -59,11 +84,17 @@ include("validation.php");
                 <label for="name"></label>
                 <input type="text" id="name" name="name" placeholder="Full Name" pattern="[A-Za-z ]{3,}" title="Enter your Full Name" required><br>
 
-                <label for="id/username"></label>
-                <input type="text" id="id/username" name="id" placeholder="ID/USERNAME" pattern="[A-Za-z0-9]{4,}" maxlength="14" title="Enter your ID/a unique username(maximum 13 characters)" required><br>
+                <div>
+                    <label for="username"></label>
+                    <input type="text" id="username" name="username" placeholder="ID/USERNAME" pattern="[A-Za-z0-9]{4,}" maxlength="14" title="Enter your ID/a unique username(maximum 13 characters)" required><br>
+                    <span></span>
+                </div>
 
-                <label for="email"></label>
-                <input type="email" id="email" name="email" placeholder="E-mail Address" title="Enter your E-mail Address" required><br>
+                <div>
+                    <label for="email"></label>
+                    <input type="email" id="email" name="email" placeholder="E-mail Address" title="Enter your E-mail Address" required><br>
+                    <span></span>
+                </div>
 
                 <label for="phone_num"></label>
                 <input type="tel" id="phone_num" name="phone_num" placeholder="Phone Number" pattern="[0-9]{11}" title="Enter your 11 digit phone Number"><br>
@@ -117,3 +148,7 @@ include("validation.php");
 </body>
 
 </html>
+
+<!-- scripts -->
+<script src="jquery-3.5.1.min.js"></script>
+<script src="script.js"></script>

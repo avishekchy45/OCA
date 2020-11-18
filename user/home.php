@@ -5,11 +5,12 @@ $user = $_SESSION['user'];
 $id = $_SESSION['user_id'];
 include("../pages/loggedout.php");
 include("usercheck.php");
+include("../connection.php");
 ?>
 <html>
 
 <head>
-    <title>OCA</title>
+    <title>HOME</title>
     <meta charset="UTF-8">
     <meta name="OCA" content="Online Class Material, Classroom, Free courses">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +24,9 @@ include("usercheck.php");
 <body>
     <div class="row-1">
         <div class="header col-12">
-            <h1>Online Class Assistance</h1>
+            <?php
+            include("../options/header.php");
+            ?>
         </div>
     </div>
 
@@ -46,17 +49,32 @@ include("usercheck.php");
 
         <div class="main col-6">
 
-            <h1>WELCOME</h1>
+            <h1>PROFILE</h1>
             <hr>
-            <p>Welcome <?php echo " \"$user\" $id " ?> to Online Class Assitance. Choose above options to proceed. Select
-                courses to select your listed courses. </p>
-
+            <?php
+            //NAME,ID,EMAIL,PHONENUMBER,BIRTHDATE,GENDER,LANGUAGES,ABOUT,PASS,PHOTO
+            //'$name','$id','$email','$phone_num','$bdate','$gender','" . $languages . "','$about','$pass','$photo'
+            $query = "select * from $user where ID='$id'";
+            $r = mysqli_query($con, $query);
+            $row = mysqli_fetch_assoc($r);
+            $name = $row['NAME'];
+            $email = $row['EMAIL'];
+            $phone_num = $row['PHONENUMBER'];
+            $bdate = $row['BIRTHDATE'];
+            $gender = $row['GENDER'];
+            $languages = $row['LANGUAGES'];
+            $about = $row['ABOUT'];
+            $photo = $row['PHOTO'] == '' ? "default.png" : $row['PHOTO'];
+            echo <<<HTML
+            <h2>Welcome $name($id) </h2>
+            <img class='dp' src='../uploads/user_photo/$photo' alt='$name'/>
+            HTML;
+            ?>
             <hr>
 
         </div>
 
         <div class="sidebar col-3">
-
         </div>
     </div>
 

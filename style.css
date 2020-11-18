@@ -129,6 +129,7 @@ body {
 .row-3 {
     margin: 0px;
     padding: 20px;
+    min-height: calc(100vh - 100px);
 }
 
 .menu {
@@ -140,12 +141,14 @@ body {
 
 .menu .option {
     padding: 20px;
-    margin: 0;
+    margin: 5px;
+    text-align: center;
     background-color: #212422;
 }
 
 .menu .option:hover {
     background-color: #2e302f;
+    transform: scale(1.1, 1.1);
 }
 
 .main {
@@ -158,6 +161,17 @@ body {
     margin: 0;
     padding: 20px;
     display: grid;
+}
+
+.sidebar .option {
+    padding: 20px;
+    margin: 5px;
+    text-align: center;
+    background-color: #212422;
+}
+
+.sidebar .option:hover {
+    background-color: #2e302f;
 }
 
 .row-4 {
@@ -186,10 +200,11 @@ body {
 a:link {
     font-weight: bolder;
     text-decoration: none;
+    color: #00ff00;
 }
 
 a:visited {
-    color: blue;
+    color: #00ff00;
 }
 
 a:hover {
@@ -197,17 +212,91 @@ a:hover {
 }
 
 a:active {
-    color: #00ff00;
+    color: blue;
 }
 
 li {
     text-align: left;
 }
 
+.dp {
+    border-radius: 50%;
+    height: 45%;
+    width: 45%;
+}
+
+td,
+th {
+    width: auto;
+    border-bottom: 1px solid black;
+}
+
+table {
+    width: 100%;
+    border-bottom: 1px solid black;
+    text-align: center;
+    overflow-x: auto;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+#approve {
+    background: linear-gradient(180deg, #00ff55, #ffffff, #00ff40);
+    color: #f00909;
+    font-size: small;
+    font-weight: bolder;
+    margin: 10px;
+    padding: 3px;
+    text-align: center;
+    width: 35%;
+    cursor: pointer;
+}
+
+#approve:hover {
+    background: linear-gradient(180deg, #4500ff, #d4dbd8, #4500ff);
+}
+
+post {
+    text-align: right;
+    display: block;
+}
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+ ::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+ ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #2e302f, #212422, #2e302f);
+    border-radius: 0;
+}
+
+ ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #212422, #2e302f, #212422);
+}
+
+@keyframes example {
+    from {
+        display: none;
+    }
+    to {
+        display: contents;
+    }
+}
+
 
 /*FORM*/
 
-form {
+#form {
     padding: 20px;
     box-shadow: 5px 5px 15px 15px gray;
 }
@@ -221,6 +310,10 @@ input {
     border-bottom: 3px solid #ccc;
     background-color: transparent;
     font-size: large;
+}
+
+input:invalid {
+    border-bottom: 3px solid #f00909;
 }
 
 input:focus {
@@ -295,7 +388,7 @@ textarea:focus {
 }
 
 button {
-    background-color: #212422;
+    background: linear-gradient(180deg, #212422, #2e302f, #212422);
     font-size: large;
     color: white;
     margin: 3px;
@@ -303,10 +396,12 @@ button {
     text-align: center;
     width: 35%;
     cursor: pointer;
+    border-radius: 20px;
 }
 
 button:hover {
-    background-color: #2e302f;
+    background: linear-gradient(180deg, #2e302f, #212422);
+    transform: scale(1.1, 1.1);
     color: #f00909;
 }
 
@@ -316,6 +411,20 @@ wrong {
 
 correct {
     color: #00ff00;
+}
+
+
+/*Styling for errors on form*/
+
+.form_error span {
+    color: #D83D5A;
+}
+
+
+/*Styling in case no errors on form*/
+
+.form_success span {
+    color: #3399ff;
 }
 
 

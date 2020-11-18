@@ -7,7 +7,6 @@ include("../pages/loggedout.php");
 include("usercheck.php");
 include("../connection.php");
 ?>
-
 <html>
 
 <head>
@@ -43,21 +42,10 @@ include("../connection.php");
 
     <div class="row-3">
         <div class="menu col-3">
-            <?php
-            include("../options/menu.php");
-            ?>
+
         </div>
 
         <div class="main col-6">
-
-            <h1>PROFILE</h1>
-            <hr>
-            <?php        
-            echo <<<HTML
-            <h2>Welcome $id </h2>
-            HTML;
-            ?>
-            <hr>
 
         </div>
 
@@ -71,6 +59,9 @@ include("../connection.php");
     <div class="row-4">
         <div class="footer col-12">
             <footer>
+                <?php
+                include("../options/footer.php");
+                ?>
             </footer>
         </div>
     </div>

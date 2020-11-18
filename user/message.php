@@ -7,7 +7,6 @@ include("../pages/loggedout.php");
 include("usercheck.php");
 include("../connection.php");
 ?>
-
 <html>
 
 <head>
@@ -43,21 +42,25 @@ include("../connection.php");
 
     <div class="row-3">
         <div class="menu col-3">
-            <?php
-            include("../options/menu.php");
-            ?>
+
         </div>
 
         <div class="main col-6">
 
-            <h1>PROFILE</h1>
-            <hr>
-            <?php        
-            echo <<<HTML
-            <h2>Welcome $id </h2>
-            HTML;
+            <?php
+            $query = "SELECT * FROM chat WHERE RECEIVER='$id' OR RECEIVER='all' ORDER BY MSG_TIME DESC";
+            $r = mysqli_query($con, $query);
+            while ($row = mysqli_fetch_array($r)) {
+                $time = $row['MSG_TIME'];
+                $from = $row['SENDER'];
+                $to = $row['RECEIVER'];
+                $msg = $row['MESSAGE'];
+                echo "<post>
+                <hr>FROM: <u>$from</u><br>TO: <u>$to</u><br>TIME: <u>$time</u>
+                <hr>
+            </post> <i>$msg</i> <br><br>";
+            }
             ?>
-            <hr>
 
         </div>
 
@@ -71,6 +74,9 @@ include("../connection.php");
     <div class="row-4">
         <div class="footer col-12">
             <footer>
+                <?php
+                include("../options/footer.php");
+                ?>
             </footer>
         </div>
     </div>

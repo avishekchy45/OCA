@@ -5,6 +5,20 @@ $user = $_SESSION['user'];
 $id = $_SESSION['user_id'];
 include("../pages/loggedout.php");
 include("usercheck.php");
+include("../connection.php");
+
+if (isset($_POST['add'])) {
+    $coursecode = $_POST['coursecode'];
+    $title = $_POST['title'];
+    $credit = $_POST['credit'];
+
+    $query = "insert into course(COURSE_CODE,TITLE,CREDIT) values('$coursecode','$title','$credit')";
+    if (mysqli_query($con, $query)) {
+        echo "<correct> Successfully Added Course... </correct>";
+    } else {
+        echo "<wrong> Error! </wrong>" . mysqli_error($con);
+    }
+}
 ?>
 <html>
 
@@ -23,7 +37,9 @@ include("usercheck.php");
 <body>
     <div class="row-1">
         <div class="header col-12">
-            <h1>Online Class Assistance</h1>
+            <?php
+            include("../options/header.php");
+            ?>
         </div>
     </div>
 
@@ -40,31 +56,37 @@ include("usercheck.php");
     <div class="row-3">
         <div class="menu col-3">
 
-            <?php
-            include("../options/menu.php");
-            ?>
         </div>
 
         <div class="main col-6">
 
-            <h1>WELCOME</h1>
-            <hr>
-            <p>Welcome <?php echo " \"$user\" $id " ?> to Online Class Assitance. Choose above options to proceed. Select
-                courses to select your listed courses. </p>
+            <form id="form" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
+
+                <label for="coursecode"></label>
+                <input type="text" id="coursecode" name="coursecode" placeholder="Course Code" required><br>
+
+                <label for="title"></label>
+                <input type="text" id="title" name="title" placeholder="Course Title" required><br>
+
+                <label for="credit"></label>
+                <input type="text" id="credit" name="credit" placeholder="Course Credit" required><br>
+
+                <button type="submit" value="Add Course" name="add">Add Course</button><br><br>
+
+            </form>
 
         </div>
 
         <div class="sidebar col-3">
-
+            <?php
+            include("../options/sidebar.php");
+            ?>
         </div>
     </div>
 
     <div class="row-4">
         <div class="footer col-12">
             <footer>
-                <?php
-                include("../options/footer.php");
-                ?>
             </footer>
         </div>
     </div>
