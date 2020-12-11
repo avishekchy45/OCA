@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -19,6 +18,8 @@ if (isset($_POST['post'])) {
         echo "<wrong> Error! </wrong>" . mysqli_error($con);
 }                
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -69,9 +70,9 @@ if (isset($_POST['post'])) {
                     while ($row = mysqli_fetch_array($r)) {
                         $coursecode = $row['COURSE_CODE'];
                         $secid = $row['SECTION_ID'];
-                        echo <<<HTML
-                            <option value="$coursecode-$secid">$coursecode-$secid</option>
-                        HTML;
+                        echo "
+                            <option value='$coursecode-$secid'>$coursecode-$secid</option>
+                        ";
                     }
                     ?>
                 </select><br>
@@ -80,25 +81,25 @@ if (isset($_POST['post'])) {
 
             <?php
             if (isset($_POST['go'])) {
-                echo <<<HTML
+                echo "
                 <style>
                 #form1{
                     display:none;
                 }
                 </style>
-                HTML;
+                ";
                 $course = $_POST['course'];
                 $course = explode('-', $course);
                 $coursecode = "$course[0]";
                 $secid = "$course[1]";
                 echo "<post>COURSE_CODE: <b>$coursecode</b> <br> SECTION_ID: <b>$secid</b></post><br><br>";
-                echo <<<HTML
-                <form action="taken.php?coursecode=$coursecode&secid=$secid" id="form2" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
-                <label for="post"></label>
-                <textarea rows="5" cols="45" id="post" name="material" maxlength="101" placeholder="Make a post...(maximum 101 characters)"></textarea><br>
-                <button id="approve" type="submit" value="POST" name="post">POST</button>
+                echo "
+                <form action='taken.php?coursecode=$coursecode&secid=$secid' id='form2' autocomplete='on' target='_self' enctype='multipart/form-data' method='POST'>
+                <label for='post'></label>
+                <textarea rows='5' cols='45' id='post' name='material' maxlength='101' placeholder='Make a post...(maximum 101 characters)'></textarea><br>
+                <button id='approve' type='submit' value='POST' name='post'>POST</button>
                 </form><br><br>
-                HTML;
+                ";
                 $query = "SELECT * FROM post WHERE COURSE_CODE='$coursecode' AND SECTION_ID='$secid' ORDER BY POSTED_TIME DESC";
                 $r = mysqli_query($con, $query);
                 while ($row = mysqli_fetch_array($r)) {

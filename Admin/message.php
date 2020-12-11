@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -28,6 +27,7 @@ if (isset($_POST['delete'])) {
 }
 
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 
 <html>
 
@@ -72,13 +72,13 @@ if (isset($_POST['delete'])) {
             <?php
             $from = $id;
             $to = "all";
-            echo <<<HTML
-            <form action="message.php?from=$id&to=$to" id="form2" autocomplete="off" target="_self" enctype="multipart/form-data" method="POST">    
-            <label for="message"></label>
-            <textarea rows="9" cols="45" id="post" name="msg" maxlength="101" placeholder="Write something here...(maximum 101 characters)"></textarea><br>
-            <button id="approve" type="submit" value="SEND" name="send">SEND</button>
+            echo "
+            <form action='message.php?from=$id&to=$to' id='form2' autocomplete='off' target='_self' enctype='multipart/form-data' method='POST'>    
+            <label for='message'></label>
+            <textarea rows='9' cols='45' id='post' name='msg' maxlength='101' placeholder='Write something here...(maximum 101 characters)'></textarea><br>
+            <button id='approve' type='submit' value='SEND' name='send'>SEND</button>
             </form><br><br>
-            HTML;
+            ";
             $query = "SELECT * FROM chat WHERE RECEIVER='$id' OR RECEIVER='$to' ORDER BY MSG_TIME DESC";
             $r = mysqli_query($con, $query);
             while ($row = mysqli_fetch_array($r)) {
@@ -87,15 +87,15 @@ if (isset($_POST['delete'])) {
                 $from = $row['SENDER'];
                 $to = $row['RECEIVER'];
                 $msg = $row['MESSAGE'];
-                echo <<<HTML
+                echo "
                 <post>
                 <hr>FROM: <u>$from</u><br>TO: <u>$to</u><br>TIME: <u>$time</u>
                 <hr>
                 </post> <i>$msg</i> <br><br>
-                <form action="message.php?chatid=$chatid" id="form2" autocomplete="off" target="_self" enctype="multipart/form-data" method="POST">    
-                <button type="submit" value="DELETE" name="delete">DELETE</button>
+                <form action='message.php?chatid=$chatid' id='form2' autocomplete='off' target='_self' enctype='multipart/form-data' method='POST'>    
+                <button type='submit' value='DELETE' name='delete'>DELETE</button>
                 </form><br><br>
-                HTML;
+                ";
             }
             ?>
 

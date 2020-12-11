@@ -1,4 +1,6 @@
 <?php
+session_start();
+include("pages/loggedin.php");
 include("validation.php");
 if (isset($_POST['username_check'])) {
     $username = $_POST['username'];
@@ -23,8 +25,6 @@ if (isset($_POST['email_check'])) {
     exit();
 }
 
-session_start();
-include("pages/loggedin.php");
 ?>
 
 <!--DESIGNED BY AVISHEK CHOWDHURY-->

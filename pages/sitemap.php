@@ -1,7 +1,8 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>

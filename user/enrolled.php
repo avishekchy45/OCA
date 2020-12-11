@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -29,6 +28,8 @@ if (isset($_POST['yes'])) {
 }
 
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -78,9 +79,9 @@ if (isset($_POST['yes'])) {
                     while ($row = mysqli_fetch_array($r)) {
                         $coursecode = $row['COURSE_CODE'];
                         $secid = $row['SECTION_ID'];
-                        echo <<<HTML
-                        <option value="$coursecode-$secid">$coursecode-$secid</option>
-                        HTML;
+                        echo "
+                        <option value='$coursecode-$secid'>$coursecode-$secid</option>
+                        ";
                     }
                     ?>
                 </select><br>
@@ -103,30 +104,30 @@ if (isset($_POST['yes'])) {
                 //echo "$coursecode-$secid";
                 $query = "select STD_ID from taken where COURSE_CODE='$coursecode' AND SECTION_ID='$secid' AND CSTATUS='pending'";
                 $r = mysqli_query($con, $query);
-                echo <<<HTML
+                echo "
                 <table id='addstudents'>
                 <tr>
                 <th>STUDENT ID</th>
                 <th>APPROVE</th>
                 </tr>
-                HTML;
+                ";
                 while ($row = mysqli_fetch_array($r)) {
                     $stdid = $row['STD_ID'];
-                    echo <<<HTML
-                    <form action="enrolled.php?stdid=$stdid&coursecode=$coursecode&secid=$secid" id="form2" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
+                    echo "
+                    <form action='enrolled.php?stdid=$stdid&coursecode=$coursecode&secid=$secid' id='form2' autocomplete='on' target='_self' enctype='multipart/form-data' method='POST'>
                     <tr>
                     <td>$stdid</td>
                     <td>
-                    <button type="submit" id="approve" value="YES" name="yes">YES</button>
-                    <button type="submit" id="approve" value="NO" name="no">NO</button>
+                    <button type='submit' id='approve' value='YES' name='yes'>YES</button>
+                    <button type='submit' id='approve' value='NO' name='no'>NO</button>
                     </td>
                     </tr>
                     </form><br><br>
-                    HTML;
+                    ";
                 }
-                echo <<<HTML
+                echo "
                 </table><br>
-                HTML;
+                ";
             }
             else if (isset($_POST['go']) && $_POST['status'] == "accepted") {
                 $course = $_POST['course'];
@@ -136,27 +137,27 @@ if (isset($_POST['yes'])) {
                 //echo "$coursecode-$secid";
                 $query = "select taken.STD_ID,NAME from taken,student where taken.STD_ID=student.ID AND COURSE_CODE='$coursecode' AND SECTION_ID='$secid' AND CSTATUS='accepted'";
                 $r = mysqli_query($con, $query);
-                echo <<<HTML
+                echo "
                 <table id='addstudents'>
                 <tr>
                 <th>STUDENT ID</th>
                 <th>NAME</th>
                 </tr>
-                HTML;
+                ";
                 while ($row = mysqli_fetch_assoc($r)) {
                     $stdid = $row['STD_ID'];
                     $name = $row['NAME'];
-                    echo <<<HTML
+                    echo "
                     <tr>
                     <td>$stdid</td>
                     <td>$name</td>
                     </td>
                     </tr>
-                    HTML;
+                    ";
                 }
-                echo <<<HTML
+                echo "
                 </table><br>
-                HTML;
+                ";
             }
             else if (isset($_POST['go']) && $_POST['status'] == "suspended") {
                 $course = $_POST['course'];
@@ -166,27 +167,27 @@ if (isset($_POST['yes'])) {
                 //echo "$coursecode-$secid";
                 $query = "select taken.STD_ID,NAME from taken,student where taken.STD_ID=student.ID AND COURSE_CODE='$coursecode' AND SECTION_ID='$secid' AND CSTATUS='suspended'";
                 $r = mysqli_query($con, $query);
-                echo <<<HTML
+                echo "
                 <table id='addstudents'>
                 <tr>
                 <th>STUDENT ID</th>
                 <th>NAME</th>
                 </tr>
-                HTML;
+                ";
                 while ($row = mysqli_fetch_assoc($r)) {
                     $stdid = $row['STD_ID'];
                     $name = $row['NAME'];
-                    echo <<<HTML
+                    echo "
                     <tr>
                     <td>$stdid</td>
                     <td>$name</td>
                     </td>
                     </tr>
-                    HTML;
+                    ";
                 }
-                echo <<<HTML
+                echo "
                 </table><br>
-                HTML;
+                ";
             }
             
             ?>

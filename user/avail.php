@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -18,6 +17,8 @@ if (isset($_POST['avail'])) {
     }
 }
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -76,31 +77,31 @@ if (isset($_POST['avail'])) {
 
             <?php
             if (isset($_POST['go'])) {
-                echo <<<HTML
+                echo "
                 <style>
                 #form1{
                     display:none;
                 }
                 </style>
-                HTML;
+                ";
                 $coursecode = $_POST['course'];
-                echo <<<HTML
-                <form action='avail.php?course=$coursecode' id="form2" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
-                <label for="section"></label>
-                <select id="section" name="section" size="1" required>
-                    <option value="">AVAILABLE SECTIONS</option>
-                HTML;
+                echo "
+                <form action='avail.php?course=$coursecode' id='form2' autocomplete='on' target='_self' enctype='multipart/form-data' method='POST'>
+                <label for='section'></label>
+                <select id='section' name='section' size='1' required>
+                    <option value=''>AVAILABLE SECTIONS</option>
+                ";
                 $sql = "select SECTION_ID from assign where COURSE_CODE='$coursecode'";
                 $r = mysqli_query($con, $sql);
                 while ($row = mysqli_fetch_array($r)) {
                     $secid = $row['SECTION_ID'];
                     echo "<option value='$secid'>$secid</option>";
                 }
-                echo <<<HTML
+                echo "
                 </select><br>
-                <button type="submit" value="Avail Course" name="avail">Avail Course</button><br><br>
+                <button type='submit' value='Avail Course' name='avail'>Avail Course</button><br><br>
                 </form>
-                HTML;
+                ";
             }
             ?>
 

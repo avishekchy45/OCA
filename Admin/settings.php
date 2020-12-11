@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -21,6 +20,8 @@ if (isset($_POST['resetpass'])) {
     }
 }
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -74,7 +75,7 @@ if (isset($_POST['resetpass'])) {
             <?php
             if (isset($_POST['go'])) {
                 if (isset($_POST['option']) == 'resetpass') {
-                    echo <<<HTML
+                    echo '
                     <form id="form" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
                     <label for="user"></label>
                     <select id="user" name="resetuser" size="1" required autofocus>
@@ -86,7 +87,7 @@ if (isset($_POST['resetpass'])) {
                     <input type="text" id="id/username" name="resetid" placeholder="ID/USERNAME" maxlength="21" title="Enter ID/USERNAME" required><br>
                     <button type="submit" value="Reset Password" name="resetpass">Reset Password</button><br><br>
                     </form><br><br>
-                    HTML;
+                    ';
                 }
             }
             ?>

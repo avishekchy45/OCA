@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -20,6 +19,7 @@ if (isset($_POST['add'])) {
     }
 }
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <html>
 
 <head>

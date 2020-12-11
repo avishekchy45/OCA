@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -20,6 +19,7 @@ if (isset($_POST['teach'])) {
     }
 }
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 
 <html>
 
@@ -72,13 +72,13 @@ if (isset($_POST['teach'])) {
                         $coursecode = $row['COURSE_CODE'];
                         $title = $row['TITLE'];
                         $credit = $row['CREDIT'];
-                        echo <<<HTML
-                            <option value="$coursecode">$coursecode-$title</option>
-                        HTML;
+                        echo "
+                            <option value='$coursecode'>$coursecode-$title</option>
+                        ";
                     }
                     ?>
                 </select><br>
-                <wrong>**SELECT SEMESTER AND SECTION. A SECTION ID WILL BE GENERATED FROM YOUR SELECTED SEMESTER AND SECTION.<wrong>
+                <wrong>**SELECT SEMESTER AND SECTION. A SECTION ID WILL BE GENERATED FROM YOUR SELECTED SEMESTER AND SECTION.<wrong><br>
                         <label for="semester"></label>
                         <select id="semester" name="semester" size="1" required>
                             <option value="">SEMESTER</option>

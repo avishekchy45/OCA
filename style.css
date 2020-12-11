@@ -221,8 +221,8 @@ li {
 
 .dp {
     border-radius: 50%;
-    height: 45%;
-    width: 45%;
+    height: 145px;
+    width: 145px;
 }
 
 td,
@@ -233,7 +233,6 @@ th {
 
 table {
     width: 100%;
-    border-bottom: 1px solid black;
     text-align: center;
     overflow-x: auto;
 }
@@ -244,6 +243,24 @@ tr:nth-child(even) {
 
 tr:hover {
     background-color: #ddd;
+}
+
+.profile table {
+    border-bottom: 0;
+}
+
+.profile tr {
+    border: 0;
+}
+
+.profile th {
+    text-align: left;
+    border: 0;
+}
+
+.profile td {
+    text-align: right;
+    border: 0;
 }
 
 #approve {
@@ -430,7 +447,7 @@ correct {
 
 /*FOR MOBILE/TABLET SMALL SCREEN*/
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     [class*="col-"] {
         width: 100%;
     }

@@ -1,8 +1,9 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 if (isset($_SESSION['user'])) {
     $user = $_SESSION['user'];
     if ($user == 'student' || $user == 'instructor')
-        header("Location:user/home.php");
+            echo("<script>location.href = 'user/home.php';</script>");
+    else if ($user == 'admin')
+            echo("<script>location.href = 'admin/home.php';</script>");
 }
 ?>

@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -33,6 +32,7 @@ if (isset($_POST['changename'])) {
     }
 }
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <html>
 
 <head>
@@ -88,7 +88,7 @@ if (isset($_POST['changename'])) {
             if (isset($_POST['go'])) {
                 $option = $_POST['option'];
                 if ($option == 'changepass') {
-                    echo <<<HTML
+                    echo '
                     <form id="form" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
                     <label for="pass"></label>
                     <input type="password" id="pass" name="opass" placeholder="Old Password..." required><br>
@@ -98,16 +98,16 @@ if (isset($_POST['changename'])) {
                     <input type="password" id="pass" name="cpass" placeholder="Confirm New Password..." required><br>
                     <button type="submit" value="Change Password" name="changepass">Change Password</button><br><br>
                     </form><br><br>
-                    HTML;
+                    ';
                 }
                 if ($option == 'changename') {
-                    echo <<<HTML
+                    echo '
                     <form id="form" autocomplete="on" target="_self" enctype="multipart/form-data" method="POST">
                     <label for="name"></label>
                     <input type="text" id="name" name="nname" placeholder="New Name" pattern="[A-Za-z ]{3,}" title="Enter your New Name" required><br>
                     <button type="submit" value="Change Name" name="changename">Change Name</button><br><br>
                     </form><br><br>
-                    HTML;
+                    ';
                 }
             }
             ?>

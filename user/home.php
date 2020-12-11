@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -7,6 +6,8 @@ include("../pages/loggedout.php");
 include("usercheck.php");
 include("../connection.php");
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -49,28 +50,52 @@ include("../connection.php");
 
         <div class="main col-6">
 
-            <h1>PROFILE</h1>
+            <h2>PROFILE</h2>
             <hr>
             <?php
             //NAME,ID,EMAIL,PHONENUMBER,BIRTHDATE,GENDER,LANGUAGES,ABOUT,PASS,PHOTO
             //'$name','$id','$email','$phone_num','$bdate','$gender','" . $languages . "','$about','$pass','$photo'
-            $query = "select * from $user where ID='$id'";
+            $query = "select NAME,EMAIL,PHONENUMBER,BIRTHDATE,GENDER,LANGUAGES,ABOUT,PHOTO,DATEDIFF(CURRENT_TIMESTAMP,REGISTRATION) as TIME from $user where ID='$id'";
             $r = mysqli_query($con, $query);
             $row = mysqli_fetch_assoc($r);
             $name = $row['NAME'];
-            $email = $row['EMAIL'];
-            $phone_num = $row['PHONENUMBER'];
-            $bdate = $row['BIRTHDATE'];
-            $gender = $row['GENDER'];
-            $languages = $row['LANGUAGES'];
+            $email = $row['EMAIL'] == '' ? "NOT FOUND <a href='settings.php'>UPDATE</a>" : $row['EMAIL'];
+            $phone_num = $row['PHONENUMBER'] == '' ? "NOT FOUND <a href='settings.php' class='approve'>UPDATE</a>" : $row['PHONENUMBER'];
+            $bdate = $row['BIRTHDATE'] == '' ? "NOT FOUND <a href='settings.php'>UPDATE</a>" : $row['BIRTHDATE'];
+            $gender = $row['GENDER'] == '' ? "NOT FOUND <a href='settings.php'>UPDATE</a>" : $row['GENDER'];
+            $languages = $row['LANGUAGES'] == '' ? "NOT FOUND <a href='settings.php'>UPDATE</a>" : $row['LANGUAGES'];
             $about = $row['ABOUT'];
             $photo = $row['PHOTO'] == '' ? "default.png" : $row['PHOTO'];
-            echo <<<HTML
-            <h2>Welcome $name($id) </h2>
+            $reg = $row['TIME'] . ' days';
+            echo "
+            <h3>Welcome $name($id) </h3>
             <img class='dp' src='../uploads/user_photo/$photo' alt='$name'/>
-            HTML;
+            <br>
+            $about
+            <br>
+            <a href='settings.php'>UPDATE YOUR BIO</a>
+            <table class='profile' id='profile'>
+            <tr>
+            <th>YOUR EMAIL</th><td>$email</td>
+            </tr>
+            <tr>
+            <th>YOUR PHONE NUMBER</th><td>$phone_num</td>
+            </tr>
+            <tr>
+            <th>YOUR BIRTHDATE</th><td>$bdate</td>
+            </tr>
+            <tr>
+            <th>YOUR GENDER</th><td>$gender</td>
+            </tr>
+            <tr>
+            <th>LANGUAGES</th><td>$languages</td>
+            </tr>
+            <tr>
+            <th>MEMBER SINCE</th><td>$reg</td>
+            </tr>
+            </table>
+            ";
             ?>
-            <hr>
 
         </div>
 

@@ -1,9 +1,10 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 include("pages/loggedin.php");
 include("validation.php");
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -62,7 +63,7 @@ include("validation.php");
                 <button type="reset" onclick="alert('Form Reset!')">RESET</button>
                 <button type="submit" name="login">LOGIN</button><br><br>
 
-                <a href="login.php" class="option" onclick="alert('Please contact with admin!')">Forget Password ?</a><br>
+                <a href="" class="option" onclick="alert('Please contact with admin!')">Forget Password ?</a><br>
 
             </form>
 

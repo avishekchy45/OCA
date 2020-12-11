@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -7,6 +6,7 @@ include("../pages/loggedout.php");
 include("usercheck.php");
 include("../connection.php");
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
 
 <html>
 
@@ -52,10 +52,10 @@ include("../connection.php");
 
             <h1>PROFILE</h1>
             <hr>
-            <?php        
-            echo <<<HTML
+            <?php
+            echo "
             <h2>Welcome $id </h2>
-            HTML;
+            ";
             ?>
             <hr>
 
@@ -71,6 +71,9 @@ include("../connection.php");
     <div class="row-4">
         <div class="footer col-12">
             <footer>
+                <?php
+                include("../options/footer.php");
+                ?>
             </footer>
         </div>
     </div>

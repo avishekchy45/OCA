@@ -1,4 +1,3 @@
-<!--DESIGNED BY AVISHEK CHOWDHURY-->
 <?php
 session_start();
 $user = $_SESSION['user'];
@@ -7,6 +6,8 @@ include("../pages/loggedout.php");
 include("usercheck.php");
 include("../connection.php");
 ?>
+<!--DESIGNED BY AVISHEK CHOWDHURY-->
+
 <html>
 
 <head>
@@ -63,29 +64,29 @@ include("../connection.php");
                     $status = $_POST['status'];
                     $query = "select taken.COURSE_CODE,SECTION_ID,TITLE from taken,course where taken.COURSE_CODE=course.COURSE_CODE and CSTATUS='$status' and STD_ID='$id'";
                     $r = mysqli_query($con, $query);
-                    echo <<<HTML
+                    echo "
                     <table id='takencourses'>
                     <tr>
                     <th>COURSE CODE</th>
                     <th>TITLE</th>
                     <th>SECTION ID</th>
                     </tr>
-                    HTML;
+                    ";
                     while ($row = mysqli_fetch_array($r)) {
                         $coursecode = $row['COURSE_CODE'];
                         $title = $row['TITLE'];
                         $section = $row['SECTION_ID'];
-                        echo <<<HTML
+                        echo "
                             <tr>
                             <td>$coursecode</td>
                             <td>$title</td>
                             <td>$section</td>
                             </tr>
-                        HTML;
+                        ";
                     }
-                    echo <<<HTML
+                    echo "
                     </table>
-                    HTML;
+                    ";
                 }
                 ?>
 
