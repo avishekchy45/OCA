@@ -3,7 +3,7 @@ session_start();
 $user = $_SESSION['user'];
 $id = $_SESSION['user_id'];
 include("../pages/loggedout.php");
-include("usercheck.php");
+include("isinstructor.php");
 include("../connection.php");
 
 if (isset($_POST['teach'])) {
