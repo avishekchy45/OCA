@@ -5,10 +5,13 @@ if (isset($_POST['login'])) {
     $user = $_POST['user'];
     $id = $_POST['id'];
     $pass = $_POST['pass'];
-    $query = "select ID,PASS from $user where BINARY ID='$id' and BINARY PASS='$pass'";
 
+    $query = "select ID,PASS from $user where BINARY ID='$id'";
     $r = mysqli_query($con, $query);
-    if (mysqli_num_rows($r) > 0) {
+    $row = mysqli_fetch_array($r);
+    $pswd = $row['PASS'];
+    
+    if (mysqli_num_rows($r) > 0 && password_verify($pass, $pswd)) {
         $_SESSION['user'] = $user;
         $_SESSION['user_id'] = $id;
         $_SESSION['login_status'] = "in";
@@ -32,6 +35,7 @@ if (isset($_POST['signup'])) {
     $languages = isset($_POST['lang']) ? implode(', ', $_POST['lang']) : '';
     $about = $_POST['about'];
     $pass = $_POST['pass'];
+    $pass = password_hash($pass, PASSWORD_DEFAULT);
     //$pass = ENCODE('$pass','$id');
     //$pass = md5('$pass');
     if (($_FILES['user_photo']['error']) == UPLOAD_ERR_OK) {
