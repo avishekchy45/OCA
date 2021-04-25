@@ -87,6 +87,10 @@ if (isset($_POST['delete'])) {
                 $from = $row['SENDER'];
                 $to = $row['RECEIVER'];
                 $msg = $row['MESSAGE'];
+				$reg_exUrl = "/(http|https|ftp|ftps)\:\/\/[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(\/\S*)?/";
+				if(preg_match($reg_exUrl, $msg, $url)) {
+						$msg = preg_replace($reg_exUrl, "<a href='{$url[0]}'>{$url[0]}</a>", $msg);
+				}
                 echo "
                 <post>
                 <hr>FROM: <u>$from</u><br>TO: <u>$to</u><br>TIME: <u>$time</u>
