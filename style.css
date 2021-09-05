@@ -1,6 +1,5 @@
 /*Designed by AVISHEK CHOWDHURY(MAC)*/
 
-
 /*GRID STTYLE*/
 
 .col-1 {
@@ -79,7 +78,6 @@ video {
     max-width: 100%;
     height: auto;
 }
-
 
 /*Design*/
 
@@ -225,8 +223,7 @@ li {
     width: 145px;
 }
 
-td,
-th {
+td, th {
     width: auto;
     border-bottom: 1px solid black;
 }
@@ -288,16 +285,16 @@ post {
     width: 15px;
 }
 
- ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: transparent;
 }
 
- ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: linear-gradient(180deg, #2e302f, #212422, #2e302f);
     border-radius: 0;
 }
 
- ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #212422, #2e302f, #212422);
 }
 
@@ -309,7 +306,6 @@ post {
         display: contents;
     }
 }
-
 
 /*FORM*/
 
@@ -378,8 +374,7 @@ select:focus:invalid {
     color: grey;
 }
 
-input[type="radio"],
-input[type="checkbox"] {
+input[type="radio"], input[type="checkbox"] {
     width: auto;
 }
 
@@ -387,8 +382,7 @@ label {
     color: grey;
 }
 
-fieldset,
-textarea {
+fieldset, textarea {
     width: 75%;
     border: 0;
     letter-spacing: 5px;
@@ -430,20 +424,17 @@ correct {
     color: #00ff00;
 }
 
-
 /*Styling for errors on form*/
 
 .form_error span {
     color: #D83D5A;
 }
 
-
 /*Styling in case no errors on form*/
 
 .form_success span {
     color: #3399ff;
 }
-
 
 /*FOR MOBILE/TABLET SMALL SCREEN*/
 
